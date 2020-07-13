@@ -12,4 +12,4 @@ RUN unzip /tmp/tflint.zip
 RUN rm /tmp/tflint.zip
 
 # Code file to execute when the docker container starts up
-#ENTRYPOINT ["/bin/sh", "/tmp/tflint"]
+ENTRYPOINT ["/bin/sh", "/tmp/tflint"]
