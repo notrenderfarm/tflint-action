@@ -10,6 +10,8 @@ WORKDIR /tmp
 RUN curl -L "$(curl -Ls https://api.github.com/repos/terraform-linters/tflint/releases/latest | grep -o -E "https://.+?_linux_amd64.zip")" -o /tmp/tflint.zip
 RUN unzip /tmp/tflint.zip
 RUN rm /tmp/tflint.zip
+RUN chmod +x /tmp/tflint
+RUN mv /tmp/tflint /usr/bin/tflint
 
 # Code file to execute when the docker container starts up
-ENTRYPOINT ["/bin/sh", "/tmp/tflint"]
+ENTRYPOINT ["tflint"]
