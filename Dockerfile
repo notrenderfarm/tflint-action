@@ -1,13 +1,9 @@
 # Container image that runs your code
-FROM ubuntu:18.04
+FROM alpine:3.10
 
 USER root
 
-RUN apt-get update && \
-    apt-get install -y \
-        curl \
-        unzip && \
-    apt-get -y autoremove && \
+RUN apk add curl unzip && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /tmp
@@ -16,4 +12,4 @@ RUN unzip /tmp/tflint.zip
 RUN rm /tmp/tflint.zip
 
 # Code file to execute when the docker container starts up
-ENTRYPOINT ["/bin/bash -c '/tmp/tflint'"]
+#ENTRYPOINT ["/bin/sh", "/tmp/tflint"]
