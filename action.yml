@@ -1,0 +1,13 @@
+# action.yml
+name: 'Tflint'
+description: 'Run tflint action'
+inputs:
+  directory:  # id of input
+    description: 'Directory where the action should run'
+    required: true
+    default: 'terraform'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.directory }}
