@@ -1,12 +1,12 @@
 # Container image that runs your code
-FROM alpine:3.10
+FROM ubuntu:18.04
 
 USER root
 
 RUN apt-get update && \
     apt-get install -y \
         curl \
-        unzip \
+        unzip && \
     apt-get -y autoremove && \
     rm -rf /var/lib/apt/lists/*
 
